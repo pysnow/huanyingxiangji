@@ -389,7 +389,7 @@ public class PreviewAndPicture extends Activity {
 			e.printStackTrace();
 		}
 		// 提示保存位置
-		Toast.makeText(PreviewAndPicture.this, "ÒÑ±£´æÎª" + fileName,
+		Toast.makeText(PreviewAndPicture.this, "已保存为" + fileName,
 				Toast.LENGTH_LONG).show();
 		// 暂停，继续还没实现---------------?
 		// Canvas canvas=surfaceView.getHolder().lockCanvas();
