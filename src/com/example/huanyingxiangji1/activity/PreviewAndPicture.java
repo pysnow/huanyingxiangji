@@ -42,7 +42,7 @@ public class PreviewAndPicture extends Activity {
 	private SurfaceView mPreview;
 	private static Camera mCamera;
 	private String savePath;
-	private boolean hasMeng;// ±ê¼ÇÊÇ·ñÒÑ¼ÓÃÉ
+	private boolean hasMeng;// æ ‡è®°æ˜¯å¦å·²åŠ è’™
 	private Uri mengUri;
 	private int alpha = 5;
 	private Bitmap bitmap;
@@ -52,11 +52,11 @@ public class PreviewAndPicture extends Activity {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case 0:
-				// ÖØĞÂ¿ªÊ¼Ô¤ÀÀ
+				// é‡æ–°å¼€å§‹é¢„è§ˆ
 				mCamera.startPreview();
 				break;
 			case 1:
-				if (PreviewAndPicture.this.hasMeng) {// ´ò¿ªcreateGroup½çÃæ
+				if (PreviewAndPicture.this.hasMeng) {// æ‰“å¼€createGroupç•Œé¢
 					Log.e(TAG, "ok to create group");
 
 					Intent i = new Intent(PreviewAndPicture.this,
@@ -65,7 +65,7 @@ public class PreviewAndPicture extends Activity {
 					i.putExtra("newpic", "file:///" + MyApplication.newPicPath);
 					PreviewAndPicture.this.startActivity(i);
 				} else {
-					// ÖØĞÂ¿ªÊ¼Ô¤ÀÀ
+					// é‡æ–°å¼€å§‹é¢„è§ˆ
 					mCamera.startPreview();
 				}
 				break;
@@ -81,7 +81,7 @@ public class PreviewAndPicture extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pic_activity);
 
-		// °ó¶¨¿Ø¼ş
+		// ç»‘å®šæ§ä»¶
 		// pictureButton = (ImageButton) findViewById(R.id.pic_button);
 
 		readPreference();
@@ -114,12 +114,12 @@ public class PreviewAndPicture extends Activity {
 					LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 
 		} else {
-			Toast.makeText(this, "Ïà»ú¶¼Ã»ÓĞ,¿ì°ÑÎÒĞ¶ÁË°É£¿", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "ç›¸æœºéƒ½æ²¡æœ‰ï¼Œå¿«æŠŠæˆ‘å¸äº†å§ï¼Ÿ", Toast.LENGTH_LONG).show();
 			this.finish();
 		}
 	}
 
-	// ¶ÁÈ¡preferenceÀïµÄÅäÖÃ
+	// è¯»å–preferenceé‡Œçš„é…ç½®
 	private void readPreference() {
 		SharedPreferences mengPicPreference = getSharedPreferences(
 				"mengPicPreference", MODE_PRIVATE);
@@ -129,7 +129,7 @@ public class PreviewAndPicture extends Activity {
 		// File
 		File storeDir = Environment
 				.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-		// File storeDir = getFilesDir(); // ´æµ½ÄÚ²¿Ë½ÓĞÄ¿Â¼
+		// File storeDir = getFilesDir(); // å­˜åˆ°å†…éƒ¨ç§æœ‰ç›®å½•
 		Log.e(TAG, storeDir.getAbsolutePath());
 		savePath = mengPicPreference.getString("savePath",
 				storeDir.getAbsolutePath());
@@ -154,7 +154,7 @@ public class PreviewAndPicture extends Activity {
 	};
 
 	private void loadMeng(boolean isReload) {
-		// ÉèÖÃÃÉ
+		// è®¾ç½®è’™
 		if (hasMeng && (bitmap == null || isReload)) {
 			try {
 				Log.e(TAG, "loadMeng.....");
@@ -167,7 +167,7 @@ public class PreviewAndPicture extends Activity {
 			}
 			// MyApplication.putPic(MyApplication.mengPic, bitmap);
 			if (bitmap == null) {
-				Toast.makeText(this, "ÃÉÍ¼Æ¬²»¼ûÁË,ÇëÖØĞÂÉèÖÃ", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "è’™å›¾ç‰‡ä¸è§äº†ï¼Œè¯·é‡æ–°è®¾ç½®", Toast.LENGTH_LONG).show();
 			} else {
 				// if (bitmap.getHeight() < bitmap.getWidth()) {
 				// bitmap = PicProcessor.rotatePic(bitmap);
@@ -230,15 +230,15 @@ public class PreviewAndPicture extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, 1, 1, "ÃÉ");
+		menu.add(0, 1, 1, "è’™");
 
 		if (hasMeng) {
-			menu.add(0, 0, 0, "È¥ÃÉ");
+			menu.add(0, 0, 0, "å»è’™");
 		} else {
-			menu.add(0, 0, 0, "¼ÓÃÉ");
+			menu.add(0, 0, 0, "åŠ è’™");
 			menu.getItem(1).setVisible(false);
 		}
-		menu.add(0, 2, 2, "´æ´¢Â·¾¶");
+		menu.add(0, 2, 2, "å­˜å‚¨è·¯å¾„");
 		menu.add(0, 3, 3, "Picture");
 
 		mengMenu = menu.getItem(1);
@@ -250,30 +250,30 @@ public class PreviewAndPicture extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case 0:// ÊÇ·ñ¼ÓÃÉ
+		case 0:// æ˜¯å¦åŠ è’™
 			if (hasMeng) {
 				mengImageView.setVisibility(View.INVISIBLE);
-				item.setTitle("¼ÓÃÉ");
+				item.setTitle("åŠ è’™");
 			} else {
 				mengImageView.setVisibility(View.VISIBLE);
-				item.setTitle("È¥ÃÉ");
+				item.setTitle("å»è’™");
 			}
 			hasMeng = !hasMeng;
 			mengMenu.setVisible(hasMeng);
 
 			break;
-		case 1:// Ñ¡È¡Í¼Æ¬ÃÉ
+		case 1:// é€‰å–å›¾ç‰‡è’™
 			Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 			intent.addCategory(Intent.CATEGORY_DEFAULT);
 			intent.setType("image/*");
 			startActivityForResult(intent, 0);
 			break;
-		case 2:// ÉèÖÃÍ¼Æ¬±£´æÂ·¾¶
+		case 2:// è®¾ç½®å›¾ç‰‡ä¿å­˜è·¯å¾„
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle("ÉèÖÃ±£´æÂ·¾¶");
+			builder.setTitle("è®¾ç½®ä¿å­˜è·¯å¾„");
 			final EditText pathText = new EditText(this);
 			builder.setView(pathText);
-			builder.setPositiveButton("È·¶¨",
+			builder.setPositiveButton("ç¡®å®š",
 					new DialogInterface.OnClickListener() {
 
 						public void onClick(DialogInterface dialog, int which) {
@@ -284,11 +284,11 @@ public class PreviewAndPicture extends Activity {
 
 							} else {
 								Toast.makeText(PreviewAndPicture.this,
-										"ÇëÑ¡ÔñÕıÈ·µÄÄ¿Â¼", Toast.LENGTH_LONG).show();
+										"è¯·é€‰æ‹©æ­£ç¡®çš„ç›®å½•", Toast.LENGTH_LONG).show();
 							}
 						}
 					});
-			builder.setNegativeButton("È¡Ïû", null);
+			builder.setNegativeButton("å–æ¶ˆ", null);
 			builder.show();
 			break;
 		case 3:// picture
@@ -303,9 +303,9 @@ public class PreviewAndPicture extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		Log.e(TAG, "onActivityResult");
 		switch (requestCode) {
-		case REQUEST_SELECT_PIC:// Ñ¡ÔñÍ¼Æ¬·µ»Ø
+		case REQUEST_SELECT_PIC:// é€‰æ‹©å›¾ç‰‡è¿”å›
 			if (resultCode == RESULT_OK && data != null) {
-				// ÕâÀïĞèÒª¶ÔÕÕÆ¬×öÒ»Ğ©´¦Àí
+				// è¿™é‡Œéœ€è¦å¯¹ç…§ç‰‡åšä¸€äº›å¤„ç†
 				// this.bitmap =
 				// MyApplication.getPic(MyApplication.mengPic);
 				// if (this.bitmap != null && !this.bitmap.isRecycled()) {
@@ -321,7 +321,7 @@ public class PreviewAndPicture extends Activity {
 				bitmap = null;
 
 				storePreference();
-			} else {// Èç¹ûÃ»ÓĞÑ¡ÔñÍ¼Æ¬£¬²¢ÇÒÖ®Ç°Ò²Ã»ÓĞÍ¼Æ¬£¬ÄÇ¾ÍÊÇÃ»ÓĞÃÉ×ÓßÂ
+			} else {// å¦‚æœæ²¡æœ‰é€‰æ‹©å›¾ç‰‡ï¼Œå¹¶ä¸”ä¹‹å‰ä¹Ÿæ²¡æœ‰å›¾ç‰‡ï¼Œé‚£å°±æ˜¯æ²¡æœ‰è’™å­å‘—
 				if (mengUri == null) {
 					hasMeng = false;
 				}
@@ -333,7 +333,7 @@ public class PreviewAndPicture extends Activity {
 		}
 	}
 
-	// ´¥Ãş¿ØÖÆ£¬ÆğÊ¼Î»ÖÃ
+	// è§¦æ‘¸æ§åˆ¶ï¼Œèµ·å§‹ä½ç½®
 	float ox, oy;
 
 	@Override
@@ -346,15 +346,15 @@ public class PreviewAndPicture extends Activity {
 			oy = y;
 			return true;
 		case MotionEvent.ACTION_MOVE:
-			if (x > ox + 20) {// ÓÒ»®
-			} else if (x < ox - 20) {// ×ó»®
-			} else if (y > oy + 20) {// ÏÂ»®
+			if (x > ox + 20) {// å³åˆ’
+			} else if (x < ox - 20) {// å·¦åˆ’
+			} else if (y > oy + 20) {// ä¸‹åˆ’
 				if (alpha != 0) {
 					alpha -= 5;
 					mengImageView.setAlpha(alpha);
 				}
 				oy = y;
-			} else if (y < oy - 20) {// ÉÏ»®
+			} else if (y < oy - 20) {// ä¸Šåˆ’
 				if (alpha != 240) {
 					alpha += 5;
 					mengImageView.setAlpha(alpha);
@@ -388,14 +388,14 @@ public class PreviewAndPicture extends Activity {
 			Log.e(TAG, "takepicture error");
 			e.printStackTrace();
 		}
-		// ÌáÊ¾±£´æÎ»ÖÃ
-		Toast.makeText(PreviewAndPicture.this, "ÒÑ±£´æÎª" + fileName,
+		// æç¤ºä¿å­˜ä½ç½®
+		Toast.makeText(PreviewAndPicture.this, "Ã’Ã‘Â±Â£Â´Ã¦ÃÂª" + fileName,
 				Toast.LENGTH_LONG).show();
-		// ÔİÍ££¬¼ÌĞø»¹Ã»ÊµÏÖ---------------£¿
+		// æš‚åœï¼Œç»§ç»­è¿˜æ²¡å®ç°---------------?
 		// Canvas canvas=surfaceView.getHolder().lockCanvas();
 		// canvas.drawBitmap(bitmap, 0, 0,null);
 		// surfaceView.getHolder().unlockCanvasAndPost(canvas);
-		// Èç¹ûÓĞmeng×¬µ½Éú³É×éµÄ½çÃæ£¬·ñÔò¼ÌĞøÔ¤ÀÀ
+		// å¦‚æœæœ‰mengèµšåˆ°ç”Ÿæˆç»„çš„ç•Œé¢ï¼Œå¦åˆ™ç»§ç»­é¢„è§ˆ
 	}
 
 }

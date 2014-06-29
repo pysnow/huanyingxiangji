@@ -27,7 +27,7 @@ public class FileProcessor {
 		tmpDirFullPath=storeDirName+tmpDirName;
 	}
 
-	// ÓĞ×éÃû·µ»Ø¸Ã×éµÄÎÄ¼şÃûÁĞ±í
+	// æœ‰ç»„åè¿”å›è¯¥ç»„çš„æ–‡ä»¶ååˆ—è¡¨
 	public ArrayList<String> getGroup(String parent,String groupName) {
 		ArrayList<String> list = new ArrayList<String>();
 		String[] tmp = new File(groupDirFullPath).list();
@@ -44,7 +44,7 @@ public class FileProcessor {
 	public ArrayList<String> getGroup(String groupName) {
 		return getGroup(groupDirFullPath,groupName);
 	}
-//	µÃµ½´æÔÚµÄ×éÃû
+//	å¾—åˆ°å­˜åœ¨çš„ç»„å
 	public  List<String> getAllGroupName() {
 		ArrayList<String> list = new ArrayList<String>(){
 //			@Override
@@ -68,7 +68,7 @@ public class FileProcessor {
 		}
 		return list;
 	}
-	// ÓÉÎÄ¼şÃûµÃµ½×éÃû£¬Èç¹û²»ÄÜµÃµ½×éÃû·µ»Ønull
+	// ç”±æ–‡ä»¶åå¾—åˆ°ç»„åï¼Œå¦‚æœä¸èƒ½å¾—åˆ°ç»„åè¿”å›null
 	public String getGroupName(String fileName) {
 		int indexofq = fileName.lastIndexOf("&");
 		String tmp = null;
@@ -78,34 +78,34 @@ public class FileProcessor {
 		return tmp;
 	}
 
-//	ÒÆ³ıÒ»¸ö×é£¬²¢¿É¸ù¾İºóÒÔ²ÎÊı¾ö¶¨ÊÇ·ñ³¹µ×É¾³ı
+//	ç§»é™¤ä¸€ä¸ªç»„ï¼Œå¹¶å¯æ ¹æ®åä»¥å‚æ•°å†³å®šæ˜¯å¦å½»åº•åˆ é™¤
 	public void removeGroup(String groupName, boolean isRealDel) {
 
 		for (Iterator<String> iterator = getGroup(groupDirFullPath,groupName).iterator(); iterator
 				.hasNext();) {
 			String filename = iterator.next();
-			if (!isRealDel) {// Èç¹û²»ÊÇ³¹µ×É¾³ı¾ÍÏÈ¸´ÖÆµ½tmpÎÄ¼ş¼ĞÖĞ
+			if (!isRealDel) {// å¦‚æœä¸æ˜¯å½»åº•åˆ é™¤å°±å…ˆå¤åˆ¶åˆ°tmpæ–‡ä»¶å¤¹ä¸­
 				String destFilePath = tmpDirFullPath + filename;
 				copyFile(filename, destFilePath);
 			}
-			// È»ºó³¹µ×É¾³ı
+			// ç„¶åå½»åº•åˆ é™¤
 			removeFile(filename);
 		}
 
 	}
-//	É¾³ıÒ»¸öÎÄ¼ş
+//	åˆ é™¤ä¸€ä¸ªæ–‡ä»¶
 	public boolean removeFile(String fileName) {
 		File file=new File(fileName);
 		return file.delete();
 	}
 
-//	´´½¨×é£¬²ÎÊıÎª×éÃû£¬Á½¸öÎÄ¼ş£¬ÒÔºóµÄÎÄ¼ş¿ÉÒÔµ÷ÓÃaddToGroupÌí¼Ó
+//	åˆ›å»ºç»„ï¼Œå‚æ•°ä¸ºç»„åï¼Œä¸¤ä¸ªæ–‡ä»¶ï¼Œä»¥åçš„æ–‡ä»¶å¯ä»¥è°ƒç”¨addToGroupæ·»åŠ 
 	public void createGroup(String groupName, String file1, String file2) {
-		// µÃµ½Á©¸öÔ´ÎÄ¼şºÍÄ¿µÄÎÄ¼ş
+		// å¾—åˆ°ä¿©ä¸ªæºæ–‡ä»¶å’Œç›®çš„æ–‡ä»¶
 		String destFilePath1 =groupDirFullPath + groupName + "&1.jpg";
 		String destFilePath2 =groupDirFullPath+ groupName + "&2.jpg";
 
-		// ¸´ÖÆÎÄ¼ş
+		// å¤åˆ¶æ–‡ä»¶
 		copyFile(file1, destFilePath1);
 		copyFile(file2, destFilePath2);
 	}
@@ -113,7 +113,7 @@ public class FileProcessor {
 	public boolean copyFile(String srcFilePath, String destFilePath) {
 		File srcFile = new File(srcFilePath);
 		File destFile = new File(destFilePath);
-		int byteread = 0; // ¶ÁÈ¡µÄ×Ö½ÚÊı
+		int byteread = 0; // è¯»å–çš„å­—èŠ‚æ•°
 		InputStream in = null;
 		OutputStream out = null;
 

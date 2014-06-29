@@ -22,7 +22,7 @@ public class MengView extends ImageView {
 		super.onDraw(canvas);
 	}
 
-	// ´¥Ãş¿ØÖÆ£¬ÆğÊ¼Î»ÖÃ
+	// è§¦æ‘¸æ§åˆ¶ï¼Œèµ·å§‹ä½ç½®
 	float ox, oy;
 
 	@Override
@@ -35,15 +35,15 @@ public class MengView extends ImageView {
 			oy = y;
 			return true;
 		case MotionEvent.ACTION_MOVE:
-			if (x > ox + 20) {// ÓÒ»®
-			} else if (x < ox - 20) {// ×ó»®
-			} else if (y > oy + 20) {// ÏÂ»®
+			if (x > ox + 20) {// å³åˆ’
+			} else if (x < ox - 20) {// å·¦åˆ’
+			} else if (y > oy + 20) {// ä¸‹åˆ’
 				if (mAlpha != 0) {
 					mAlpha -= 5;
 					this.setAlpha(mAlpha);
 				}
 				oy = y;
-			} else if (y < oy - 20) {// ÉÏ»®
+			} else if (y < oy - 20) {// ä¸Šåˆ’
 				if (mAlpha != 240) {
 					mAlpha += 5;
 					this.setAlpha(mAlpha);

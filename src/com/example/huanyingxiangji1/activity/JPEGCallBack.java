@@ -12,7 +12,7 @@ import com.example.huanyingxiangji1.MyApplication;
 import com.example.huanyingxiangji1.processor.PicProcessor;
 
 /*
- * ����ΪjpegͼƬ
+ * 保存为jpeg图片
  */
 public class JPEGCallBack implements PictureCallback {
 

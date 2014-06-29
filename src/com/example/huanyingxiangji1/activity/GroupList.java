@@ -92,7 +92,7 @@ public class GroupList extends ListActivity implements OnItemClickListener{
 			String groupName = (String) iterator.next();
 			map=new HashMap<String, Object>();
 			map.put("groupName", groupName);
-//			¶ÁÈ¡×éÄÚµÄÍ¼Æ¬
+//			è¯»å–ç»„å†…çš„å›¾ç‰‡
 			List<String>filePaths=fileProcessor.getGroup(groupName);
 			for (int i=0;i<filePaths.size();i++) {
 				String picPath = filePaths.get(i);
@@ -110,7 +110,7 @@ public class GroupList extends ListActivity implements OnItemClickListener{
 //		gifProcessor.generateGif("", fileProcessor.getGroup("jin"),dataDir+application.group+"aa.gif", 1000);
 		return list;
 	}
-	//¼ì²éÄÚ´æ¿¨,Èç¹û¿ÉÓÃ·µ»Øtrue
+	//æ£€æŸ¥å†…å­˜å¡ï¼Œå¦‚æœå¯ç”¨è¿”å›true
 	private boolean checkMedia() {
 		String state = Environment.getExternalStorageState();
 		if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -119,7 +119,7 @@ public class GroupList extends ListActivity implements OnItemClickListener{
 		    return false;
 		}
 	}
-//	¹¹½¨´æ´¢Êı¾İµÄÄ¿Â¼
+//	æ„å»ºå­˜å‚¨æ•°æ®çš„ç›®å½•
 	private void checkDir() {
 		if (checkMedia()) {
 			File sdcard=Environment.getExternalStorageDirectory();
@@ -177,7 +177,7 @@ public class GroupList extends ListActivity implements OnItemClickListener{
 			  try {
 				  String destPic= MyApplication.out_path+groupName+".jpg";
 				picProcessor.PicCombinate(fileProcessor.getGroup(groupName),destPic, 0);
-				Toast.makeText(this, "ÒÑ±£´æµ½"+MyApplication.out_path, Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "å·²ä¿å­˜åˆ°"+MyApplication.out_path, Toast.LENGTH_LONG).show();
 			  } catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -187,7 +187,7 @@ public class GroupList extends ListActivity implements OnItemClickListener{
 			  try {
 				  String destPic= MyApplication.out_path+groupName+".jpg";
 				picProcessor.PicCombinate(fileProcessor.getGroup(groupName),destPic, 1);
-				Toast.makeText(this, "ÒÑ±£´æµ½"+MyApplication.out_path, Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "å·²ä¿å­˜åˆ°"+MyApplication.out_path, Toast.LENGTH_LONG).show();
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -228,7 +228,7 @@ public class GroupList extends ListActivity implements OnItemClickListener{
 			  ((BaseAdapter) getListAdapter()).notifyDataSetChanged();
 		}else if (requestCode==7) {
 			fileProcessor.addToGroup(groupName,data.getData().toString().substring(7) );
-			//»¹Ó¦¸Ã¸üĞÂÁĞ±í
+			//è¿˜åº”è¯¥æ›´æ–°åˆ—è¡¨
 		}
 	}
 	

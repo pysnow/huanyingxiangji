@@ -36,12 +36,12 @@ public class PicProcessor {
 		// animatedGifEncoder.setQuality(1);
 	}
 
-	// Í¨¹ıuri»ñµÃbitmap
+	// é€šè¿‡uriè·å¾—bitmap
 	public static Bitmap getBitmapFromUri(Context c, Uri uri, float scale)
 			throws Exception {
 		Bitmap b = null;
 		if (uri.getScheme().equals("content")) {
-			// SomeTool.makeToast("´ÓÎÄ¼ş¹ÜÀíÑ¡Ôñ°É£¬ÔİÊ±²»ÄÜ´ÓÏà²¾Ñ¡Ôñ£¬ÒÔºó»áºÃµÄ£¬ÏàĞÅÎÒ", this);
+			// SomeTool.makeToast("ä»æ–‡ä»¶ç®¡ç†é€‰æ‹©å§ï¼Œæš‚æ—¶ä¸èƒ½ä»ç›¸ç°¿é€‰æ‹©ï¼Œä»¥åä¼šå¥½çš„ï¼Œç›¸ä¿¡æˆ‘", this);
 			b = BitmapFactory.decodeStream(c.getContentResolver()
 					.openInputStream(uri));
 		} else {
@@ -50,7 +50,7 @@ public class PicProcessor {
 
 		}
 		if (b == null) {
-			throw new Exception("ÕÒ²»×ÅÕâÍ¼Æ¬Ñ½£¬ÕâÊÇÎªÊ²Ã´ÄØ£¿ÄúÉ¾ÁËÂğ£¿");
+			throw new Exception("æ‰¾ä¸ç€è¿™å›¾ç‰‡å‘€ï¼Œè¿™æ˜¯ä¸ºä»€ä¹ˆå‘¢ï¼Ÿæ‚¨å²€äº†å—ï¼Ÿ");
 		}
 		Bitmap tmp = Bitmap.createScaledBitmap(b, (int) (b.getWidth() * scale),
 				(int) (b.getHeight() * scale), true);
@@ -68,7 +68,7 @@ public class PicProcessor {
 		out.close();
 	}
 
-	// Ğı×ªÍ¼Æ¬
+	// æ—‹è½¬å›¾ç‰‡
 	static public Bitmap rotatePic(Bitmap bitmap) {
 		// Log.e("imageview","width:"+mengImageView.getWidth()+" : height: "+mengImageView.getHeight());
 		// Log.e("surface","width:"+surfaceView.getWidth()+" : height: "+surfaceView.getHeight());
@@ -83,7 +83,7 @@ public class PicProcessor {
 		return tmp;
 	}
 
-	// Éú³Égif
+	// ç”Ÿæˆgif
 	public void generateGif(String parentDir, List<String> PicPathList,
 			String gifPath, int delay) {
 		// animatedGifEncoder.start(gifPath);
@@ -97,7 +97,7 @@ public class PicProcessor {
 	}
 
 	//
-	// //·ÖÀëgif£¬Í¨¹ı²ÎÊıÀ´µÃµ½·ÖÀëµÄÍ¼Æ¬£¬·µ»ØÖµÊÇÁ½Í¼Æ¬¼äµÄÑÓ³Ù
+	// //åˆ†ç¦»gifï¼Œé€šè¿‡å‚æ•°æ¥å¾—åˆ°åˆ†ç¦»çš„å›¾ç‰‡ï¼Œè¿”å›å€¼æ˜¯ä¸¤ä¸ªå›¾ç‰‡é—´çš„å»¶è¿Ÿ
 	// public int seperateGif(String gifPath,ArrayList<BufferedImage>list) {
 	// ArrayList<BufferedImage>tmp=new ArrayList<BufferedImage>();
 	// int t = 0;
@@ -113,7 +113,7 @@ public class PicProcessor {
 	// return t;
 	// }
 
-	// ½«¶à¸öÍ¼Æ¬ÅÅÁĞ×éºÏ³ÉÒ»¸öÍ¼Æ¬
+	// å°†å¤šä¸ªå›¾ç‰‡æ’åˆ—ç»„åˆæˆä¸€ä¸ªå›¾ç‰‡
 	public void PicCombinate(ArrayList<String> picPathList,
 			String destFilePath, int orientation) throws FileNotFoundException {
 		Bitmap bitmap = null;
@@ -125,14 +125,14 @@ public class PicProcessor {
 			String fileName = picPathList.get(i);
 			Log.e(tag, fileName);
 			bitmap = BitmapFactory.decodeFile(fileName);
-			// ÔÚµÚÒ»¸öÍ¼Æ¬Ê±È·¶¨ºÃÄ¿µÄÍ¼Æ¬µÄ´óĞ¡
+			// åœ¨ç¬¬ä¸€ä¸ªå›¾ç‰‡æ—¶ç¡®å®šå¥½ç›®çš„å›¾ç‰‡çš„å¤§å°
 			if (i == 0) {
 				cellWidth = bitmap.getWidth();
 				cellHeight = bitmap.getHeight();
-				if (orientation == 0) {// Ë®Æ½ÅÅÁĞ,
+				if (orientation == 0) {// æ°´å¹³æ’åˆ—ï¼Œ
 					destBitmap = Bitmap.createBitmap(picPathList.size()
 							* cellWidth, cellHeight, Bitmap.Config.RGB_565);
-				} else if (orientation == 1) {// ´¹Ö±ÅÅÁĞ
+				} else if (orientation == 1) {// å‚ç›´æ’åˆ—
 					destBitmap = Bitmap.createBitmap(cellWidth,
 							picPathList.size() * cellHeight,
 							Bitmap.Config.RGB_565);
@@ -142,10 +142,10 @@ public class PicProcessor {
 			}
 
 			canvas = new Canvas(destBitmap);
-			// °ÑÍ¼Æ¬»­ÔÚÄ¿µÄÍ¼Æ¬ÉÏ
-			if (orientation == 0) {// Ë®Æ½ÅÅÁĞ
+			// åœ¨å›¾ç‰‡ç”»åœ¨ç›®çš„å›¾ç‰‡ä¸Š
+			if (orientation == 0) {// æ°´å¹³æ’åˆ—
 				canvas.drawBitmap(bitmap, i * cellWidth, 0, null);
-			} else if (orientation == 1) {// ´¹Ö±ÅÅÁĞ
+			} else if (orientation == 1) {// å‚ç›´æ’åˆ—
 				canvas.drawBitmap(bitmap, 0, i * cellHeight, null);
 			}
 		}

@@ -34,7 +34,7 @@ public class ViewPicture extends Activity {
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.pic_view);
 	   
-//	    通过全局变量传过来的图片数据
+//	    閫氳繃鍏ㄥ眬鍙橀噺浼犺繃鏉ョ殑鍥剧墖鏁版嵁
 	    String groupName=getIntent().getStringExtra("groupName");
 	    String dataDir=Environment.getExternalStorageDirectory().getAbsolutePath()+
 				"/"+MyApplication.APP_SD_DIR;

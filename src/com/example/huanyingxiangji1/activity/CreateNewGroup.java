@@ -31,14 +31,14 @@ public class CreateNewGroup extends Activity implements OnClickListener {
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_new_group);
-		// °ó¶¨¿Ø¼ş
+		// ç»‘å®šæ§ä»¶
 		picButton1 = (ImageButton) findViewById(R.id.picButton1);
 		picButton2 = (ImageButton) findViewById(R.id.picButton2);
 		okButton = (Button) findViewById(R.id.OK);
 		cancelButton = (Button) findViewById(R.id.cancel);
 		groupNameText = (EditText) findViewById(R.id.groupNameInput);
 
-		// ¶ÁÈ¡Á½¸öÍ¼Æ¬
+		// è¯»å–ä¸¤ä¸ªå›¾ç‰‡
 		pic1 = getIntent().getExtras().getString("mengpic");
 		pic2 = getIntent().getExtras().getString("newpic");
 
